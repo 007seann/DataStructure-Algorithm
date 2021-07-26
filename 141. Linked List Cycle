@@ -1,0 +1,52 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+ 
+ 
+// Approach 1 : using Hash Table
+
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+    
+    Set<ListNode> visited = new HashSet<>();
+    while(head != null) { 
+        if(visited.contains(head)) return true;
+        visited.add(head);
+        head = head.next;
+    }
+    return false;
+    
+    }
+}
+
+// Approach 2 : Floyd's Cycle Finding Algorithm
+
+// Setting field differenlty can make an issue in a different way.
+// Let's think that two people are runining in a different rate. 
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+      ListNode fast;
+      ListNode slow;
+    
+      if(head == null) return false; 
+      
+      while(fast != null && fast.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+      if(slow == fast) return true;
+      } 
+    
+      return false;   
+    
+    }  
+    
+  }
+    
