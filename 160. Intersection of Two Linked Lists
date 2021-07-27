@@ -1,0 +1,29 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+ 
+// This soultion is similar to Linked List Cycle
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        Set<ListNode> visited = new HashSet<>();
+        // Traversing headB
+        while(headB != null) {
+            visited.add(headB);
+            headB = headB.next;
+        }
+        // Traversing headA
+        while(headA != null) {
+            if (visited.contains(headA)) return headA;
+            headA = headA.next;
+        }
+        return null;
+    }
+}
