@@ -1,0 +1,41 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+ 
+// Two skills
+//1. Expressing Nth Node with distance between slow node and fast node.
+//2. Making dummy node to simmplify some corner cases such as a list with only one node, or remomving the head of list.  
+
+
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        // Making dummy node to simmplify some corner cases such as a list with only one node, or remomving the head of list. 
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        
+        ListNode slow = dummy;
+        ListNode fast = dummy;
+        
+        // Expressing Nth Node with distance between slow node and fast node. 
+        while(fast.next != null) {
+            fast = fast.next;
+            if(n-- <= 0) {
+                slow = slow.next;
+            }
+        }
+        // Delete Nth Node from the end of the list. 
+         slow.next = slow.next.next;
+         
+         return dummy.next;
+        
+}
+}
+
+//  Reference :https://www.youtube.com/watch?v=Kka8VgyFZfc 
