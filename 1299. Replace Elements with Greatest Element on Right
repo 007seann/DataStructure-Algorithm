@@ -1,4 +1,25 @@
-//https://www.youtube.com/watch?v=GFbyWp_JON8
+class Solution {
+    public int[] replaceElements(int[] arr) {
+        
+      
+        int max_value = -1;
+        int previous = -1;
+        for(int i = arr.length - 1; i >=0; i--) {
+            
+            // save an element in a previous fleid
+            previous = arr[i];
+            // update an element with maximum value
+            arr[i] = max_value;
+            // finding a greatest element on right side
+            max_value = Math.max(max_value, previous);
+        }
+        return arr;
+             
+        
+    }
+}
+//https://www.youtube.com/watch?v=k2xd5w7ZLKc
+
 
 class Solution {
     public int[] replaceElements(int[] arr) {
@@ -14,3 +35,6 @@ class Solution {
         return arr;
     }
 }
+
+//https://www.youtube.com/watch?v=GFbyWp_JON8
+
