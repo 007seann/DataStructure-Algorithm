@@ -1,0 +1,65 @@
+//Approach #1
+class Solution {
+    public void moveZeroes(int[] nums) {
+        
+        // dealing with corner case
+        if(nums.length == 0 || nums.length == 1)
+            return;
+        
+        int left = 0, right = 0;
+        // making a space to save nums[left] data. 
+				int temp;
+        
+				
+        while(right < nums.length) {
+            
+						// 
+            if(nums[right] == 0) {
+                ++right;
+            }
+            else {
+								// Switching right next elements of an array
+                temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+                // moving pointer in order to move zero element to the end of an array 
+								++right;
+                ++left;
+            }
+        }
+        return;
+        }
+}
+
+// Coming up the two pointer technique idea is a good, but need to think in detail 
+// more precisiely, progressively. 
+
+// S.C = O(1)
+// T.C = O(n)
+
+
+// Reference https://www.youtube.com/watch?v=PNJoyRaIW7U
+
+
+//Approach #2
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int lastNonZeroFoundAt = 0;
+        
+        // If an element is not 0, then non-zero elements is
+        // placed in front of an array. 
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] != 0) {
+                nums[lastNonZeroFoundAt++] = nums[i];
+            }
+        }
+        
+        // Filling zero elements into the rest place of the array.
+        for(int i = lastNonZeroFoundAt; i < nums.length; i++) {
+            nums[i] = 0;
+        }
+        
+        return;
+        
+        }
+}
