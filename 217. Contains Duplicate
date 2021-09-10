@@ -1,0 +1,32 @@
+```java
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> hashset = new HashSet<>();
+        for (int elm : nums) {
+            if (hashset.contains(elm)) {
+                return true;
+            }
+            hashset.add(elm);
+        }
+        return false;
+    }
+}
+
+/**
+
+ Template for using hash set to find duplicates.
+
+ * boolean findDuplicates(List<Type> keys) {
+    // Replace Type with actual type of your key
+    Set<Type> hashset = new HashSet<>();
+    for (Type key : keys) {
+        if (hashset.contains(key)) {
+            return true;
+        }
+        hashset.add(key);
+    }
+    return false;
+}
+
+*/
+```
